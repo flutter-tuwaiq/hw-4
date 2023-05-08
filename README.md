@@ -1,47 +1,49 @@
-<h1>Homework #4</h1>
+A server app built using [Shelf](https://pub.dev/packages/shelf),
+configured to enable running with [Docker](https://www.docker.com/).
 
-<h3>Submission instructions: </h3>
+This sample code handles HTTP GET requests to `/` and `/echo/<message>`
 
-  1.  Fork this repo.
-  2.  Clone your version of the homework into you local development environment.
-  ```console 
-    git clone <url>
-  ```
-  3.  Create a branch with your name, the following commands might help you:
-  ```console
-  // Create the branch
-  git branch firstname-lastname
-  
-  // Checkout the branch
-  git checkout firstname-lastname
-  
-  //
-  /// Add your files that you will solve the hw in
-  //
-  
-  // Add your new files to the staging level
-  git add .
-  
-  // Commit you staged files
-  git commit -am "solve: descriptive meassge"
-  
-  // Push your branch
-  git push --set-upstream origin firstname-lastname
-  ```
-  5.  Create a PR containing your solution to the homework original repo
-    
-    
-  
-# Details
+# Running the sample
 
-1. Create a Dart Server called `Backend-Lab-1`.
-2. Create 3 `get` endpoints: `/home`, `/settings` and `/about`.
-3. Test out these endpoints using API testing tools, i.e, `Postman` and `Curl`
+## Running with the Dart SDK
 
+You can run the example with the [Dart SDK](https://dart.dev/get-dart)
+like this:
 
-# Deadline
+```
+$ dart run bin/server.dart
+Server listening on port 8080
+```
 
-Submit by 9/5/2023 10:00 AM
+And then from a second terminal:
+```
+$ curl http://0.0.0.0:8080
+Hello, World!
+$ curl http://0.0.0.0:8080/echo/I_love_Dart
+I_love_Dart
+```
 
-# Note
-Make sure that the name of the PR is your `firstname lastname`
+## Running with Docker
+
+If you have [Docker Desktop](https://www.docker.com/get-started) installed, you
+can build and run with the `docker` command:
+
+```
+$ docker build . -t myserver
+$ docker run -it -p 8080:8080 myserver
+Server listening on port 8080
+```
+
+And then from a second terminal:
+```
+$ curl http://0.0.0.0:8080
+Hello, World!
+$ curl http://0.0.0.0:8080/echo/I_love_Dart
+I_love_Dart
+```
+
+You should see the logging printed in the first terminal:
+```
+2021-05-06T15:47:04.620417  0:00:00.000158 GET     [200] /
+2021-05-06T15:47:08.392928  0:00:00.001216 GET     [200] /echo/I_love_Dart
+```
