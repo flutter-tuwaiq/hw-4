@@ -11,13 +11,13 @@ void main(List<String> args) async {
 
   final router = Router()
     ..get('/home', (Request req) {
-      return Response.ok('Endpoint #1');
+      return Response.ok('home');
     })
     ..get('/settings', (Request req) {
-      return Response.ok('Endpoint #2');
+      return Response.ok('settings');
     })
     ..get('/about', (Request req) {
-      return Response.ok('Endpoint #3');
+      return Response.ok('about');
     });
 
   final server = await serve(router, ip, port);
