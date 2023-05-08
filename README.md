@@ -1,4 +1,4 @@
-<h1>Lab #3</h1>
+<h1>Homework #4</h1>
 
 <h3>Submission instructions: </h3>
 
